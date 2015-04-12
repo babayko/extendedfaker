@@ -1,0 +1,25 @@
+syntax: regexp
+project.conf$
+^\.tmp
+^\.project
+^\.pydevproject
+^\.settings
+\.pyc$
+\.old$
+\.log$
+\.log.*$
+\.orig$
+\.pid$
+~$
+~[0-9]+
+\.form-backup
+
+syntax: glob
+.ropeproject
+project.conf
+supervisord.local.conf
+.idea/*
+docs/build/*
+
+relre:^src/env/
+.setup.py.kate-swp
