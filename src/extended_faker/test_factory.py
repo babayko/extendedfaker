@@ -6,4 +6,6 @@ from factory import Factory
 class TestFactory(TestCase):
     def test_create(self):
         faker = Factory.create()
-        result = faker.person_inn()
+        result = faker.marriage_status()
+        result = faker.male_nation()
+        pass

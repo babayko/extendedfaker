@@ -1,7 +1,8 @@
 # coding: utf-8
 from faker.providers.person.ru_RU import Provider as BaseProvider
-from third_male_names import THIRD_MALE_NAMES
-from third_female_names import THIRD_FEMALE_NAMES
+from third_names import THIRD_MALE_NAMES, THIRD_FEMALE_NAMES
+from nations import NATIONS, MALE_NATIONS, FEMALE_NATIONS
+from marriage import STATUSES as MARRIAGE_STATUSES
 
 
 class Provider(BaseProvider):
@@ -24,6 +25,14 @@ class Provider(BaseProvider):
     third_female_names = THIRD_FEMALE_NAMES
     # отчества
     third_names = THIRD_MALE_NAMES + THIRD_FEMALE_NAMES
+    # национальности во множественном числе
+    multi_nations = NATIONS
+    # национальности мужского рода
+    male_nations = MALE_NATIONS
+    # нациоанльности женского рода
+    female_nations = FEMALE_NATIONS
+    # семейные положения
+    marriage_statuses = MARRIAGE_STATUSES
 
     @classmethod
     def first_name_initial(cls):
@@ -106,10 +115,9 @@ class Provider(BaseProvider):
         :rtype: unicode
         """
         def get_element(indexes):
-            return str(
-                sum(
-                    map(lambda x: int(x[0]) * x[1], zip(inn, indexes))
-                ) / 11 / 10)
+            _sum = sum(map(lambda x: int(x[0]) * x[1], zip(inn, indexes)))
+
+            return str(_sum % 11 % 10)
 
         base_indexes = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
         extended_indexes = [3] + base_indexes
@@ -120,9 +128,41 @@ class Provider(BaseProvider):
 
         return inn
 
+    @classmethod
+    def nations(cls):
+        """
+        Возвращает национальность во множественном числе
+        :return: Национальность
+        :rtype: unicode
+        """
+        return cls.random_element(cls.multi_nations)
 
+    @classmethod
+    def male_nation(cls):
+        """
+        Возвращает национальность мужского рода
+        :return: Национальность
+        :rtype: unicode
+        """
+        return cls.random_element(cls.male_nations)
 
+    @classmethod
+    def female_nation(cls):
+        """
+        Возвращает национальность женского рода
+        :return: Национальность
+        :rtype: unicode
+        """
+        return cls.random_element(cls.female_nations)
 
+    @classmethod
+    def marriage_status(cls):
+        """
+        Возвращает семейной положение человека
+        :return: Семейное положение
+        :rtype: unicode
+        """
+        return cls.random_element(cls.marriage_statuses)
 
 
 
