@@ -59,7 +59,7 @@ NATIONS = [
     u'Коми-пермяки',
 ]
 
-MALE_NATIONS = [
+MALE = [
     u'Русский',
     u'Татарин',
     u'Аварец',
@@ -119,7 +119,7 @@ MALE_NATIONS = [
 ]
 
 
-FEMALE_NATIONS = [
+FEMALE = [
     u'Русская',
     u'Татарка',
     u'Аварка',

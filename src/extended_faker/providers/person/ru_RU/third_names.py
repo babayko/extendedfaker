@@ -1,6 +1,6 @@
 # coding: utf-8
 
-THIRD_MALE_NAMES = [
+MALE = [
     u'Александрович',
     u'Адамович',
     u'Анатольевич',
@@ -81,7 +81,7 @@ THIRD_MALE_NAMES = [
     u'Ярославович',
 ]
 
-THIRD_FEMALE_NAMES = [
+FEMALE = [
     u'Александровна',
     u'Андреевна',
     u'Архиповна',

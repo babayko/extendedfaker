@@ -1,8 +1,10 @@
 # coding: utf-8
 from faker.providers.person.ru_RU import Provider as BaseProvider
-from third_names import THIRD_MALE_NAMES, THIRD_FEMALE_NAMES
-from nations import NATIONS, MALE_NATIONS, FEMALE_NATIONS
+from third_names import MALE as THIRD_MALE_NAMES, FEMALE as THIRD_FEMALE_NAMES
+from nations import NATIONS, MALE as MALE_NATIONS, FEMALE as FEMALE_NATIONS
 from marriage import STATUSES as MARRIAGE_STATUSES
+from education import TYPES as EDUCATION_TYPES, DOCS as EDUCATION_DOCS
+from language import LANGUAGES
 
 
 class Provider(BaseProvider):
@@ -33,6 +35,12 @@ class Provider(BaseProvider):
     female_nations = FEMALE_NATIONS
     # семейные положения
     marriage_statuses = MARRIAGE_STATUSES
+    # виды образования
+    education_types = EDUCATION_TYPES
+    # документы об образовании
+    education_docs = EDUCATION_DOCS
+    # языки
+    languages = LANGUAGES
 
     @classmethod
     def first_name_initial(cls):
@@ -164,8 +172,29 @@ class Provider(BaseProvider):
         """
         return cls.random_element(cls.marriage_statuses)
 
+    @classmethod
+    def education_type(cls):
+        """
+        Возвращает вид образования человека
+        :return: Вид образования
+        :rtype: unicode
+        """
+        return cls.random_element(cls.education_types)
 
+    @classmethod
+    def education_doc(cls):
+        """
+        Возвращает документ об образовании человека
+        :return: Документ об образовании
+        :rtype: unicode
+        """
+        return cls.random_element(cls.education_docs)
 
-
-
-
+    @classmethod
+    def language(cls):
+        """
+        Возвращает язык человека
+        :return: Язык
+        :rtype: unicode
+        """
+        return cls.random_element(cls.languages)
